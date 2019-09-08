@@ -17,7 +17,7 @@ export class BookList extends React.Component{
         );
     }
 
-    componentWillMount(){
+    componentDidMount(){
         BookActions.readBooks();
     }
 

@@ -9,10 +9,11 @@ export class BookList extends React.Component{
 
     createBookRow(book){
         return (
-            <tr key={book.id}>
-                <td> {book.id} </td>
+            <tr key={book.bookId}>
+                <td> {book.bookId} </td>
                 <td> {book.title} </td>
-                <td> {book.author} </td>
+                <td> {book.authId} </td>
+                <td> {book.pubId}</td>
                 <td><button>+</button></td>
                 <td><button>-</button></td>
             </tr>
@@ -32,7 +33,8 @@ export class BookList extends React.Component{
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
-                            <th>Author</th>
+                            <th>AuthorId</th>
+                            <th>PubId</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>

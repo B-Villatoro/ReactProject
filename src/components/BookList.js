@@ -14,8 +14,8 @@ export class BookList extends React.Component{
                 <td> {book.title} </td>
                 <td> {book.authId} </td>
                 <td> {book.pubId}</td>
-                <td><button>+</button></td>
-                <td><button>-</button></td>
+                <td><button >+</button></td>
+                <td><button onClick={()=>BookActions.deleteBook(book.bookId)} >-</button></td>
             </tr>
         );
     }
@@ -28,6 +28,9 @@ export class BookList extends React.Component{
         return(
             <div>
                 <h1>Books<button>+</button></h1>
+                <div>
+                    {this.props.bookModal}
+                </div>
                 <table className="table">
                     <thead>
                         <tr>
@@ -49,8 +52,11 @@ export class BookList extends React.Component{
 }
 
 BookList.propTypes = {
-    bookList: PropTypes.array.isRequired
+    bookList: PropTypes.array.isRequired,
+    bookModal:PropTypes.bool,
+    handleClick:PropTypes.object
 };
+
 
 
 

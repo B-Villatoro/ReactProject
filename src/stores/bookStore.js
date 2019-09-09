@@ -37,6 +37,11 @@ Dispatcher.register( (action) => {
             _bookStore.books = action.data;
             BookStore.emitChange();
             break;
+
+        case "delete_book":
+            _bookStore.books = action.data;
+            BookStore.emitChange();
+            break;
         default:
             return;
     }

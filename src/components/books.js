@@ -2,19 +2,27 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BookList} from '../components/BookList';
+import { BookList } from '../components/BookList';
 
-export class Books extends React.Component{
+export class Books extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            click: "hello",
+        }
+    }
+
 
     render() {
-        return(
+        return (
             <div>
-                <BookList bookList = {this.props.bookList} />
+                <BookList bookList={this.props.bookList}/>
             </div>
         );
     }
 }
 
 Books.propTypes = {
-    bookList: PropTypes.array.isRequired
+    bookList: PropTypes.array.isRequired,
+    bookModal: PropTypes.bool
 };

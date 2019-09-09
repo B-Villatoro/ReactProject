@@ -1,28 +1,19 @@
 "use strict";
 
-// var books = require('./bookModel').books;
 import axios from "axios";
-
-// var _clone = function(item) {
-// 	return JSON.parse(JSON.stringify(item)); // pass by value
-// };
 var BookApi = {
-	getAllBooks: function () {
+	getAllBooks: async function () {
 		return axios.get("http://localhost:3000/book");
 	},
-	addBook: function (book) {
+	addBook: async function (book) {
 		axios.post("http://localhost:3000/book", book);
+	},
+	updateBook: async function(book){
+		axios.put(`http://localhost:3000/book/${book.id}`,book)
+	},
+	deleteBook:async function(id){
+		axios.delete(`http://localhost:3000/book/${id}`)
 	}
-	// let data;
-	// axios.get("http://localhost:3000/book")
-	// .then(async (res) => {
-	// 	data = await res.data;
-	// 	console.log(data,"bookapi");
-	// });
-	// console.log(data,"before return");
-	// return  data;
-	// return(_clone(books))
-	//Add the rest of the  CRUD operation here
 };
 
 module.exports = BookApi;

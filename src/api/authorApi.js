@@ -15,10 +15,10 @@ import Axios from 'axios';
 // };
 
 var AuthorApi = {
+
     getAllAuthors: async function(){
         return Axios.get('http://localhost:3000/author')
-        
-        
+    
     },
     addAuthor: function(author){
         Axios.post('http://localhost:3000/author', author)

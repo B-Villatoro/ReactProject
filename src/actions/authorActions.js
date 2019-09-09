@@ -3,21 +3,28 @@ import AuthorApi from '../api/authorApi';
 import Dispatcher from '../dispatcher/appDispatcher';
 
 const AuthorActions = {
+    authorList:[],
     readAuthors: function(){
-        const authorList = AuthorApi.getAllAuthors();
+        AuthorApi.getAllAuthors().then((response)=>{
+            this.authorList = response.data;
+        });
+        console.log(this.authorList);
 
         Dispatcher.dispatch({
             actionType: 'read_authors',
-            data: authorList
+            data: this.authorList
         });
     },
 
     addAuthor: function(author){
-        const authorList = AuthorApi.addAuthor(author);
+        AuthorApi.addAuthor(author);
+        AuthorApi.getAllAuthors().then((response) => {
+            this.authorList = response.data;
+        })
 
         Dispatcher.dispatch({
             acutionType: 'add_author',
-            data: authorList
+            data: this.authorList
         });
     },
 

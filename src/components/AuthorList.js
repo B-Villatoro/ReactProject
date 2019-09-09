@@ -5,10 +5,6 @@ import PropTypes from 'prop-types';
 import AuthorActions from '../actions/authorActions';
 
 export class AuthorList extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = { authors: [] };
-    }
 
     createAuthorRow(author){
         return (

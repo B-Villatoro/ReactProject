@@ -1,6 +1,11 @@
 "use strict";
 import Axios from 'axios';
 
+// var _clone = function(item) {
+//     console.log(JSON.parse(JSON.stringify(item)));
+// 	return JSON.parse(JSON.stringify(item)); // pass by value
+// };
+
 // var _update = function(item){
 
 // };
@@ -11,11 +16,12 @@ import Axios from 'axios';
 
 var AuthorApi = {
     getAllAuthors: async function(){
-        const response = await Axios.get('http:localhost:3000/author');
-        console.log(response);
-        return response;
+        return Axios.get('http://localhost:3000/author')
+        
+        
     },
-    addAuthor: function(){
+    addAuthor: function(author){
+        Axios.post('http://localhost:3000/author', author)
 
     },
     updateAuthor: function(){

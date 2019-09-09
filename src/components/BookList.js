@@ -13,6 +13,8 @@ export class BookList extends React.Component{
                 <td> {book.id} </td>
                 <td> {book.title} </td>
                 <td> {book.author} </td>
+                <td><button>+</button></td>
+                <td><button>-</button></td>
             </tr>
         );
     }
@@ -24,13 +26,15 @@ export class BookList extends React.Component{
     render() {
         return(
             <div>
-                <h1>Books</h1>
+                <h1>Books<button>+</button></h1>
                 <table className="table">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>

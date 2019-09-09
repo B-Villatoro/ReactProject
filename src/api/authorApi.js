@@ -1,24 +1,29 @@
 "use strict";
+import Axios from 'axios';
 
-var authors = require('./authorModel').authors;
+// var _update = function(item){
 
-var _clone = function(item){
-    return JSON.parse(JSON.stringify(item));
-};
+// };
+
+// var _delete = function(item){
+
+// };
 
 var AuthorApi = {
-    getAllAuthors: function(){
-        return _clone(authors);
+    getAllAuthors: async function(){
+        const response = await Axios.get('http:localhost:3000/author');
+        console.log(response);
+        return response;
     },
-    // addAuthor: function(){
+    addAuthor: function(){
 
-    // },
-    // updateAuthor: function(){
+    },
+    updateAuthor: function(){
 
-    // },
-    // deleteAuthor: function(){
+    },
+    deleteAuthor: function(){
         
-    // }
+    }
 };
 
 module.exports = AuthorApi;

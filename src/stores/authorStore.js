@@ -20,7 +20,20 @@ class AuthorStoreClass extends EventEmitter{
         this.emit(CHANGE_EVENT);
     }
 
-    getAllBooks(){
+    getAllAuthors(){
+        return _authorStore.authors;
+    }
+
+    addAuthor(author){
+        _authorStore.authors.concat(author)
+        return _authorStore.authors;
+    }
+
+    updateAuthor(){
+        return _authorStore.authors;
+    }
+
+    deleteAuthor(){
         return _authorStore.authors;
     }
 }
@@ -31,6 +44,10 @@ Dispatcher.register( (action)=> {
 
     switch (action.actionType){
         case 'read_authors':
+            _authorStore.authors = action.data;
+            AuthorStore.emitChange();
+            break;
+        case 'add_author':
             _authorStore.authors = action.data;
             AuthorStore.emitChange();
             break;

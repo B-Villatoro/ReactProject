@@ -23,18 +23,6 @@ class AuthorStoreClass extends EventEmitter{
     getAllAuthors(){
         return _authorStore.authors;
     }
-
-    addAuthor(){
-        return _authorStore.authors;
-    }
-
-    updateAuthor(){
-        return _authorStore.authors;
-    }
-
-    deleteAuthor(){
-        return _authorStore.authors;
-    }
 }
 
 const AuthorStore = new AuthorStoreClass();

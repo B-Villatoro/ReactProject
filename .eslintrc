@@ -20,7 +20,8 @@
     "no-underscore-dangle": 0,
     "no-alert": 0,
     "no-lone-blocks": 0,
-    "react/jsx-uses-vars": ["error"]
+    "react/jsx-uses-vars": ["error"],
+    "no-console": 0
   },
   "globals": {
     "jQuery": true,

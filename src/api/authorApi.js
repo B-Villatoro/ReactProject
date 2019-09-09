@@ -10,9 +10,9 @@ import Axios from 'axios';
 // };
 
 var AuthorApi = {
-    getAllAuthors: async function(){
-        const response = await Axios.get('http:localhost:3000/author');
-        console.log(response);
+    getAllAuthors:  function(){
+        const response =  Axios.get('http:localhost:3000/author');
+        // console.log(response);
         return response;
     },
     addAuthor: function(){

@@ -28,6 +28,10 @@ export class AuthorList extends React.Component{
         AuthorActions.readAuthors();
     }
 
+    componentDidUpdate(){
+        AuthorActions.readAuthors();
+    }
+
     render(){
         return(
             <div>

@@ -4,16 +4,13 @@ import Dispatcher from '../dispatcher/appDispatcher';
 
 const AuthorActions = {
     authorList:[],
-    readAuthors: function(){
+    readAuthors: async function(){
         AuthorApi.getAllAuthors().then((response)=>{
-            this.authorList = response.data;
-        });
-        console.log(this.authorList);
-
-        Dispatcher.dispatch({
-            actionType: 'read_authors',
-            data: this.authorList
-        });
+            Dispatcher.dispatch({
+                actionType: 'read_authors',
+                data: response.data
+            });
+        });    
     },
 
     addAuthor: function(author){
@@ -37,13 +34,17 @@ const AuthorActions = {
         });
     },
 
-    deleteAuthor: function(){
-        const author = AuthorApi.deleteAuthor();
-
-        Dispatcher.dispatch({
-            actionType: 'delete_author',
-            data: author
-        });
+    deleteAuthor: async function(id){
+        //console.log(id);
+        AuthorApi.deleteAuthor(id);
+        AuthorApi.getAllAuthors().then((response) => {
+            this.authorList = response.data;
+            Dispatcher.dispatch({
+                actionType: 'delete_author',
+                data: this.authorList
+            });
+        })
+        
     }
 }
 

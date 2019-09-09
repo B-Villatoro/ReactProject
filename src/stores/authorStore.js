@@ -24,8 +24,7 @@ class AuthorStoreClass extends EventEmitter{
         return _authorStore.authors;
     }
 
-    addAuthor(author){
-        _authorStore.authors.concat(author)
+    addAuthor(){
         return _authorStore.authors;
     }
 
@@ -48,6 +47,10 @@ Dispatcher.register( (action)=> {
             AuthorStore.emitChange();
             break;
         case 'add_author':
+            _authorStore.authors = action.data;
+            AuthorStore.emitChange();
+            break;
+        case 'delete_author':
             _authorStore.authors = action.data;
             AuthorStore.emitChange();
             break;

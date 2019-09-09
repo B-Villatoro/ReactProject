@@ -4,7 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AuthorActions from '../actions/authorActions';
 
+
 export class AuthorList extends React.Component{
+
 
     createAuthorRow(author){
         return (
@@ -12,9 +14,14 @@ export class AuthorList extends React.Component{
                 <td>{author.authorId}</td>
                 <td>{author.authorName}</td>
                 <td><button>+</button></td>
-                <td><button>-</button></td>
+                <td><button onClick={()=>this._handleClick(author.authorId)}>-</button></td>
             </tr>
         );
+    }
+
+    _handleClick(id){
+        console.log(id);
+        AuthorActions.deleteAuthor(id);
     }
 
     componentDidMount(){

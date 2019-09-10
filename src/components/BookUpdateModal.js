@@ -2,16 +2,17 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import AuthorActions from '../actions/authorActions';
+import BookActions from '../actions/bookActions';
 import {Modal, Button, Form } from "react-bootstrap"
 
-export class AuthorUpdateModal extends React.Component {
+
+export class BookUpdateModal extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             show: false,
-            authorName: ""
+            title: ""
         }
     }
 
@@ -21,7 +22,7 @@ export class AuthorUpdateModal extends React.Component {
 
     _handleShow(){
         this.setState({show:true})
-        console.log(this.props.authorId)
+        console.log(this.props.bookId)
     }
 
     _handleForm(e){
@@ -29,12 +30,12 @@ export class AuthorUpdateModal extends React.Component {
     }
 
     _handleClick(){
-        let author ={
-            authorId: this.props.authorId,
-            authorName: this.state.authorName
+        let book ={
+            bookId: this.props.bookId,
+            title: this.state.title
         }
-        console.log(author);
-        AuthorActions.updateAuthor(author);
+        console.log(book);
+        BookActions.updateBook(book);
         this._handleClose();
     }
 
@@ -48,14 +49,14 @@ export class AuthorUpdateModal extends React.Component {
             <Modal animation={false} show={this.state.show} onHide={()=>this._handleClose()}>
                 
                     <Modal.Header closeButton>
-                        <Modal.Title>Update Author</Modal.Title>
+                        <Modal.Title>Update Book</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form>
 
                             <Form.Group controlId="formName">
-                                <Form.Label>Author Name</Form.Label>
-                                <Form.Control name = "authorName" onChange={(e)=>this._handleForm(e)}  type="text" placeholder="Enter New Author Name"/>
+                                <Form.Label>Book Name</Form.Label>
+                                <Form.Control name = "title" onChange={(e)=>this._handleForm(e)}  type="text" placeholder="Enter New Book Title"/>
                             </Form.Group>
 
                             <Button variant="primary" type="submit" onClick ={() => this._handleClick()}>
@@ -69,6 +70,6 @@ export class AuthorUpdateModal extends React.Component {
     }
 }
 
-AuthorUpdateModal.propTypes = {
-    authorId: PropTypes.number.isRequired
+BookUpdateModal.propTypes = {
+    bookId: PropTypes.number.isRequired
 }

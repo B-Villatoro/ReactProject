@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BookActions from '../actions/bookActions';
 import {BookModal} from "../components/BookModal";
+import {BookUpdateModal} from "../components/BookUpdateModal";
+import {Button} from "react-bootstrap"
 
 export class BookList extends React.Component {
 
@@ -12,10 +14,10 @@ export class BookList extends React.Component {
             <tr key={book.bookId}>
                 <td> {book.bookId} </td>
                 <td> {book.title} </td>
-                <td> {book.authorId} </td>
+                <td> {book.authId} </td>
                 <td> {book.pubId}</td>
-                <td><button onClick={()=>this._handleUpdateBook(book.bookId)} >Update</button></td>
-                <td><button onClick={() => BookActions.deleteBook(book.bookId)} >Delete</button></td>
+                <td><BookUpdateModal bookId={book.bookId}>Update</BookUpdateModal></td>
+                <td><Button onClick={() => BookActions.deleteBook(book.bookId)} >Delete</Button></td>
             </tr>
         );
     }

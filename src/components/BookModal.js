@@ -13,7 +13,7 @@ export class BookModal extends React.Component {
             show: false,
             bookId: "",
             title: "",
-            authorId: "",
+            authId: "",
             pubId: ""
         }
     }
@@ -24,7 +24,7 @@ export class BookModal extends React.Component {
         let book = {
             bookId: this.state.bookId,
             title: this.state.title,
-            authorId: this.state.authorId,
+            authId: this.state.authId,
             pubId: this.state.pubId
         }
         console.log(book);
@@ -68,7 +68,7 @@ export class BookModal extends React.Component {
 
                             <Form.Group controlId="formAuthorId">
                                 <Form.Label>Author Id</Form.Label>
-                                <Form.Control onChange={(e) => this._handleForm(e)} name="authorId" type="text" placeholder="Enter author id" />
+                                <Form.Control onChange={(e) => this._handleForm(e)} name="authId" type="text" placeholder="Enter author id" />
                             </Form.Group>
 
                             <Form.Group controlId="formPublisherId">

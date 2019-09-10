@@ -3,34 +3,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BookActions from '../actions/bookActions';
+import {BookModal} from "../components/BookModal";
 
+export class BookList extends React.Component {
 
-export class BookList extends React.Component{
-
-    createBookRow(book){
+    createBookRow(book) {
         return (
             <tr key={book.bookId}>
                 <td> {book.bookId} </td>
                 <td> {book.title} </td>
-                <td> {book.authId} </td>
+                <td> {book.authorId} </td>
                 <td> {book.pubId}</td>
                 <td><button >+</button></td>
-                <td><button onClick={()=>BookActions.deleteBook(book.bookId)} >-</button></td>
+                <td><button onClick={() => BookActions.deleteBook(book.bookId)} >-</button></td>
             </tr>
         );
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        BookActions.readBooks();
+    }
+    componentDidUpdate() {
         BookActions.readBooks();
     }
 
     render() {
-        return(
+        return (
             <div>
                 <h1>Books<button>+</button></h1>
-                <div>
-                    {this.props.bookModal}
-                </div>
+
+                <BookModal></BookModal>
+
                 <table className="table">
                     <thead>
                         <tr>
@@ -44,7 +47,7 @@ export class BookList extends React.Component{
                     </thead>
                     <tbody>
                         {this.props.bookList.map(this.createBookRow, this)}
-                    </tbody>    
+                    </tbody>
                 </table>
             </div>
         );
@@ -53,8 +56,8 @@ export class BookList extends React.Component{
 
 BookList.propTypes = {
     bookList: PropTypes.array.isRequired,
-    bookModal:PropTypes.bool,
-    handleClick:PropTypes.object
+    bookModal: PropTypes.bool,
+    handleClick: PropTypes.object
 };
 
 

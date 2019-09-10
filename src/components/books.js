@@ -7,9 +7,6 @@ import { BookList } from '../components/BookList';
 export class Books extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            click: "hello",
-        }
     }
 
 

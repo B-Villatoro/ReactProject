@@ -9,7 +9,7 @@ var BookApi = {
 		axios.post("http://localhost:3000/book", book);
 	},
 	updateBook: async function(book){
-		axios.put(`http://localhost:3000/book/${book.id}`,book)
+		axios.put(`http://localhost:3000/book/${book.bookId}`,book)
 	},
 	deleteBook:async function(id){
 		axios.delete(`http://localhost:3000/book/${id}`)

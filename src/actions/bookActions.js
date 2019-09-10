@@ -12,19 +12,28 @@ const BooksActions = {
         });
     },
     addBook: function (book) {
-        BookApi.addBook(book)
-        // BookApi.getAllBooks().then(response => {
-        //     Dispatcher.dispatch({
-        //         actionType: 'book_added',
-        //         data: response.data
-        //     });
-        // });
+        BookApi.addBook(book);
+        BookApi.getAllBooks().then(response => {
+            Dispatcher.dispatch({
+                actionType: 'add_book',
+                data: response.data
+            })
+        });
     },
     deleteBook: (id) => {
         BookApi.deleteBook(id);
         BookApi.getAllBooks().then(response => {
             Dispatcher.dispatch({
                 actionType: 'delete_book',
+                data: response.data
+            })
+        });
+    },
+    updateBook: (book) => {
+        BookApi.updateBook(book);
+        BookApi.getAllBooks().then(response => {
+            Dispatcher.dispatch({
+                actionType: 'update_book',
                 data: response.data
             })
         });

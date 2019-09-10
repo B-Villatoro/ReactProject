@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import AuthorActions from '../actions/authorActions';
 import {AuthorModal} from '../components/AuthorModal';
 import {AuthorUpdateModal} from '../components/AuthorUpdateModal';
+import {Button} from "react-bootstrap"
 
 
 
@@ -16,7 +17,7 @@ export class AuthorList extends React.Component {
                 <td>{author.authorId}</td>
                 <td>{author.authorName}</td>
                 <td><AuthorUpdateModal authorId={author.authorId}></AuthorUpdateModal></td>
-                <td><button onClick={() => this._handleClick(author.authorId)}>-</button></td>
+                <td><Button onClick={() => this._handleClick(author.authorId)}>Delete</Button></td>
             </tr>
         );
     }

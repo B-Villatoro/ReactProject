@@ -12,7 +12,8 @@ var AuthorApi = {
 
     },
     updateAuthor: async function(author){
-        Axios.put('htttp://loclhost:3000/author/'+author.authorId, author)
+        console.log(author)
+        Axios.put(`http://localhost:3000/author/${author.authorId}`, author)
     },
     deleteAuthor: async function(id){
         //console.log(id)

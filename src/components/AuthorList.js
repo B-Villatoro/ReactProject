@@ -3,39 +3,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AuthorActions from '../actions/authorActions';
+import {AuthorModal} from '../components/AuthorModal';
+import {AuthorUpdateModal} from '../components/AuthorUpdateModal';
 
 
-export class AuthorList extends React.Component{
 
+export class AuthorList extends React.Component {
 
-    createAuthorRow(author){
+    createAuthorRow(author) {
         return (
             <tr key={author.authorId}>
                 <td>{author.authorId}</td>
                 <td>{author.authorName}</td>
-                <td><button>+</button></td>
-                <td><button onClick={()=>this._handleClick(author.authorId)}>-</button></td>
+                <td><AuthorUpdateModal authorId={author.authorId}></AuthorUpdateModal></td>
+                <td><button onClick={() => this._handleClick(author.authorId)}>-</button></td>
             </tr>
         );
     }
 
-    _handleClick(id){
+    _handleClick(id) {
         console.log(id);
         AuthorActions.deleteAuthor(id);
     }
+    _handleUpdate(){
+        
+    }
 
-    componentDidMount(){
+    componentDidMount() {
         AuthorActions.readAuthors();
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         AuthorActions.readAuthors();
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <h1>Authors<button>+</button></h1>
+                <h1>Authors</h1>
+                <AuthorModal></AuthorModal>
                 <table className="table">
                     <thead>
                         <tr>

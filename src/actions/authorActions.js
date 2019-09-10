@@ -25,13 +25,18 @@ const AuthorActions = {
         });
     },
 
-    updateAuthor: function(){
-        const authorList = AuthorApi.updateAuthor();
+    updateAuthor: function(author){
+        AuthorApi.updateAuthor(author);
+        AuthorApi.getAllAuthors().then((response) => {
+            this.authorList = response.data;
 
-        Dispatcher.dispatch({
-            acutionType: 'update_author',
-            data: authorList
-        });
+            Dispatcher.dispatch({
+                acutionType: 'update_author',
+                data: this.authorList
+            });
+        })
+
+        
     },
 
     deleteAuthor: async function(id){

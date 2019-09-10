@@ -2,7 +2,7 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
-// import BookActions from "../actions/bookActions";
+import BookActions from "../actions/bookActions";
 import { Modal, Button, Form } from "react-bootstrap"
 
 export class BookModal extends React.Component {
@@ -11,57 +11,76 @@ export class BookModal extends React.Component {
         super(props);
         this.state = {
             show: false,
+            bookId: "",
+            title: "",
+            authorId: "",
+            pubId: ""
         }
     }
-
-    handleClose() {
-        this.setState({ show: false })
-        console.log(this.state.show);
+    _handleForm(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
-    handleShow() {
+    _handleSubmit() {
+        let book = {
+            bookId: this.state.bookId,
+            title: this.state.title,
+            authorId: this.state.authorId,
+            pubId: this.state.pubId
+        }
+        console.log(book);
+        BookActions.addBook(book);
+        this._handleClose();
+    }
+
+    _handleClose() {
+        this.setState({ show: false })
+    }
+    _handleShow() {
         this.setState({ show: true })
-        console.log(this.state.show);
+    }
+    _handleAddBook(book) {
+        BookActions.addBook(book)
     }
 
     render() {
         return (
             <div>
-                <Button variant="primary" onClick={() => this.handleShow()}>
+                <Button variant="primary" onClick={() => this._handleShow()}>
                     Add new book
                 </Button>
 
-                <Modal animation={false} show={this.state.show} onHide={()=>this.handleClose()}>
-                    
-                        <Modal.Header closeButton>
-                            <Modal.Title>Add New Book</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <Form.Group controlId="formBookId">
-                                    <Form.Label>Book Id</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter book id" />
-                                </Form.Group>
+                <Modal animation={false} show={this.state.show} onHide={() => this._handleClose()}>
 
-                                <Form.Group controlId="formTitle">
-                                    <Form.Label>Title</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter title" />
-                                </Form.Group>
-                                
-                                <Form.Group controlId="formAuthorId">
-                                    <Form.Label>Author Id</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter author id" />
-                                </Form.Group>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add New Book</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group controlId="formBookId">
+                                <Form.Label>Book Id</Form.Label>
+                                <Form.Control onChange={(e) => this._handleForm(e)} name="bookId" type="text" placeholder="Enter book id" required />
+                            </Form.Group>
 
-                                <Form.Group controlId="formPublisherId">
-                                    <Form.Label>Publisher Id</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter publisher id" />
-                                </Form.Group>
+                            <Form.Group controlId="formTitle">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control onChange={(e) => this._handleForm(e)} name="title" type="text" placeholder="Enter title" />
+                            </Form.Group>
 
-                                <Button variant="primary" type="submit">
-                                    Submit
+                            <Form.Group controlId="formAuthorId">
+                                <Form.Label>Author Id</Form.Label>
+                                <Form.Control onChange={(e) => this._handleForm(e)} name="authorId" type="text" placeholder="Enter author id" />
+                            </Form.Group>
+
+                            <Form.Group controlId="formPublisherId">
+                                <Form.Label>Publisher Id</Form.Label>
+                                <Form.Control onChange={(e) => this._handleForm(e)} name="pubId" type="text" placeholder="Enter publisher id" />
+                            </Form.Group>
+
+                            <Button variant="primary" onClick={() => { this._handleSubmit() }}>
+                                Submit
                                 </Button>
-                            </Form>
-                        </Modal.Body>
+                        </Form>
+                    </Modal.Body>
                 </Modal>
             </div>
         );

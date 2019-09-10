@@ -13,21 +13,9 @@ const BooksActions = {
     },
     addBook: function (book) {
         BookApi.addBook(book)
-        // BookApi.getAllBooks().then(response => {
-        //     Dispatcher.dispatch({
-        //         actionType: 'book_added',
-        //         data: response.data
-        //     });
-        // });
     },
     deleteBook: (id) => {
         BookApi.deleteBook(id);
-        BookApi.getAllBooks().then(response => {
-            Dispatcher.dispatch({
-                actionType: 'delete_book',
-                data: response.data
-            })
-        });
     }
 }
 

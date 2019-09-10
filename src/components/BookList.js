@@ -14,10 +14,14 @@ export class BookList extends React.Component {
                 <td> {book.title} </td>
                 <td> {book.authorId} </td>
                 <td> {book.pubId}</td>
-                <td><button >+</button></td>
-                <td><button onClick={() => BookActions.deleteBook(book.bookId)} >-</button></td>
+                <td><button onClick={()=>this._handleUpdateBook(book.bookId)} >Update</button></td>
+                <td><button onClick={() => BookActions.deleteBook(book.bookId)} >Delete</button></td>
             </tr>
         );
+    }
+
+    _handleUpdateBook(bookId){
+        console.log(bookId);
     }
 
     componentDidMount() {
@@ -30,7 +34,7 @@ export class BookList extends React.Component {
     render() {
         return (
             <div>
-                <h1>Books<button>+</button></h1>
+                <h1>Books</h1>
 
                 <BookModal></BookModal>
 

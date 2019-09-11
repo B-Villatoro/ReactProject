@@ -27,7 +27,6 @@ export class BookModal extends React.Component {
             authId: this.state.authId,
             pubId: this.state.pubId
         }
-        console.log(book);
         BookActions.addBook(book);
         this._handleClose();
     }

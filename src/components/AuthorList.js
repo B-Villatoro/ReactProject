@@ -16,14 +16,13 @@ export class AuthorList extends React.Component {
             <tr key={author.authorId}>
                 <td>{author.authorId}</td>
                 <td>{author.authorName}</td>
-                <td><AuthorUpdateModal authorId={author.authorId}></AuthorUpdateModal></td>
+                <td><AuthorUpdateModal author={author}></AuthorUpdateModal></td>
                 <td><Button onClick={() => this._handleClick(author.authorId)}>Delete</Button></td>
             </tr>
         );
     }
 
     _handleClick(id) {
-        console.log(id);
         AuthorActions.deleteAuthor(id);
     }
     _handleUpdate(){

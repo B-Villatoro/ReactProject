@@ -11,7 +11,7 @@ export class AuthorUpdateModal extends React.Component {
         super(props);
         this.state = {
             show: false,
-            authorName: ""
+            authorName: props.author.authorName
         }
     }
 
@@ -21,20 +21,15 @@ export class AuthorUpdateModal extends React.Component {
 
     _handleShow(){
         this.setState({show:true})
-        console.log(this.props.authorId)
     }
 
-    _handleForm(e){
-        this.setState({[e.target.name]:e.target.value});
+    _handleForm(value){
+        this.setState({authorName:value});
     }
 
     _handleClick(){
-        let author ={
-            authorId: this.props.authorId,
-            authorName: this.state.authorName
-        }
-        console.log(author);
-        AuthorActions.updateAuthor(author);
+        this.props.author.authorName = this.state.authorName;
+        AuthorActions.updateAuthor(this.props.author);
         this._handleClose();
     }
 
@@ -55,7 +50,7 @@ export class AuthorUpdateModal extends React.Component {
 
                             <Form.Group controlId="formName">
                                 <Form.Label>Author Name</Form.Label>
-                                <Form.Control name = "authorName" onChange={(e)=>this._handleForm(e)}  type="text" placeholder="Enter New Author Name"/>
+                                <Form.Control name = "authorName" onChange={(e)=>this._handleForm(e.target.value)}  type="text" value={this.state.authorName}/>
                             </Form.Group>
 
                             <Button variant="primary" type="submit" onClick ={() => this._handleClick()}>
@@ -70,5 +65,5 @@ export class AuthorUpdateModal extends React.Component {
 }
 
 AuthorUpdateModal.propTypes = {
-    authorId: PropTypes.number.isRequired
+    author: PropTypes.object.isRequired
 }

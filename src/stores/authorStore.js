@@ -35,12 +35,14 @@ Dispatcher.register( (action)=> {
             AuthorStore.emitChange();
             break;
         case 'add_author':
-            _authorStore.authors = action.data;
+            _authorStore.authors.push(action.data)
             AuthorStore.emitChange();
             break;
         case 'delete_author':
-            _authorStore.authors = action.data;
+            _authorStore.authors.pop(action.data);
             AuthorStore.emitChange();
+            break;
+        case 'update_author':
             break;
         default:
             return;

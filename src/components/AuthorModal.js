@@ -32,7 +32,6 @@ export class AuthorModal extends React.Component {
             authorId: this.state.authorId,
             authorName: this.state.authorName
         }
-        console.log(author);
         AuthorActions.addAuthor(author);
         this._handleClose();
     }

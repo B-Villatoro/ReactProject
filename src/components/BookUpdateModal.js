@@ -22,7 +22,6 @@ export class BookUpdateModal extends React.Component {
 
     _handleShow(){
         this.setState({show:true})
-        console.log(this.props.bookId)
     }
 
     _handleForm(e){
@@ -34,7 +33,6 @@ export class BookUpdateModal extends React.Component {
             bookId: this.props.bookId,
             title: this.state.title
         }
-        console.log(book);
         BookActions.updateBook(book);
         this._handleClose();
     }

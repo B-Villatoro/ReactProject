@@ -22,10 +22,6 @@ export class BookList extends React.Component {
         );
     }
 
-    _handleUpdateBook(bookId){
-        console.log(bookId);
-    }
-
     componentDidMount() {
         BookActions.readBooks();
     }

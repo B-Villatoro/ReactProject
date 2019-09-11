@@ -15,26 +15,18 @@ const AuthorActions = {
 
     addAuthor: function(author){
         AuthorApi.addAuthor(author);
-        AuthorApi.getAllAuthors().then((response) => {
-            this.authorList = response.data;
-        })
-
         Dispatcher.dispatch({
             acutionType: 'add_author',
-            data: this.authorList
+            data: author
         });
     },
 
     updateAuthor: function(author){
         AuthorApi.updateAuthor(author);
-        AuthorApi.getAllAuthors().then((response) => {
-            this.authorList = response.data;
-
             Dispatcher.dispatch({
                 acutionType: 'update_author',
-                data: this.authorList
+                data: author
             });
-        })
 
         
     },
@@ -42,12 +34,10 @@ const AuthorActions = {
     deleteAuthor: async function(id){
         //console.log(id);
         AuthorApi.deleteAuthor(id);
-        AuthorApi.getAllAuthors().then((response) => {
-            this.authorList = response.data;
+          
             Dispatcher.dispatch({
                 actionType: 'delete_author',
-                data: this.authorList
-            });
+                data: id
         })
         
     }

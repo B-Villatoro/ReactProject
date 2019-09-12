@@ -6,9 +6,10 @@ const AuthorActions = {
     authorList:[],
     readAuthors: async function(){
         AuthorApi.getAllAuthors().then((response)=>{
+            this.authorList = response.data
             Dispatcher.dispatch({
                 actionType: 'read_authors',
-                data: response.data
+                data: this.authorList
             });
         });    
     },
@@ -34,7 +35,6 @@ const AuthorActions = {
     deleteAuthor: async function(id){
         //console.log(id);
         AuthorApi.deleteAuthor(id);
-          
             Dispatcher.dispatch({
                 actionType: 'delete_author',
                 data: id

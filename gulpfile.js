@@ -14,11 +14,13 @@ var config = {
 	devBaseUrl: 'http://localhost',
 	paths: {
 		html: './src/*.html',
-		js: './src/**/*.js',
+		js: [
+			'./src/**/*.js',
+			'node_modules/bootstrap/dist/js/bootstrap.min.js'
+		],
 		images: './src/images/*',
 		css: [
-			'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+			'node_modules/bootstrap/dist/css/bootstrap.min.css'
 		],
 		dist: './dist',
 		mainJs: './src/main.js'
